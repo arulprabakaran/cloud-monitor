@@ -1,0 +1,78 @@
+{
+	"name": "cloud-monitor",
+	"productName": "Cloud Monitor",
+	"version": "0.0.1",
+	"description": "Smart way to alert you when your website certificates need renewal or aren't working",
+	"license": "MIT",
+	"repository": "arulprabakaran/cloud-monitor",
+	"author": {
+		"name": "Arul Prabakaran",
+		"email": "arul.prabakaran@gmail.com",
+		"url": "https://arulprabakaran.web.app"
+	},
+	"scripts": {
+		"postinstall": "electron-builder install-app-deps",
+		"lint": "xo",
+		"test": "npm run lint",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --macos --linux --windows",
+		"release": "np"
+	},
+	"dependencies": {
+		"electron-store": "^5.1.0",
+		"electron-updater": "^4.0.6",
+		"electron-util": "^0.13.0"
+	},
+	"devDependencies": {
+		"electron": "^7.1.1",
+		"electron-builder": "^22.6.0",
+		"electron-reloader": "^0.3.0",
+		"np": "^5.0.3",
+		"xo": "^0.25.3"
+	},
+	"xo": {
+		"envs": [
+			"node",
+			"browser"
+		]
+	},
+	"np": {
+		"publish": false,
+		"releaseDraft": false
+	},
+	"build": {
+		"appId": "app.web.arulprabakaran.cloudmonitor",
+		"mac": {
+			"category": "public.app-category.productivity",
+			"darkModeSupport": true,
+			"icon": "icons/icon.icns"
+		},
+		"dmg": {
+			"iconSize": 160,
+			"contents": [
+				{
+					"x": 180,
+					"y": 170
+				},
+				{
+					"x": 480,
+					"y": 170,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"linux": {
+			"icon": "icons",
+			"target": [
+				"AppImage",
+				"deb"
+			],
+			"category": "Utility;Monitor"
+		},
+		"win": {
+			"icon": "icons/icon.ico"
+		}
+	}
+}

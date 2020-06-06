@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Cloud Monitor</title>
+	<link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+	<section id="empty-block" class="hidden-element">
+
+		<h1>No monitors found.</h1>
+		<p>Add new websites to start monitoring SSL certificates and get notified about validity.</p>
+		<div class="button-create" id="emptyCreateWebsiteBtn">
+			Add Monitor
+		</div>
+
+	</section>
+
+	<section id="stats" class="hidden-element">
+
+		<div class="container">
+
+			<div class="col-4">
+
+				<div class="stat">
+
+					<h2 id="valid-certificates" class="success-color">43</h2>
+					<p>Certificate valid</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-4">
+
+				<div class="stat">
+
+					<h2 id="expiring-certificates" class="warning-color">32</h2>
+					<p>Expiring soon</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-4">
+
+				<div class="stat">
+
+					<h2 id="expired-certificates" class="danger-color">8</h2>
+					<p>Certificate expired</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section id="all-monitors" class="hidden-element">
+
+		<div class="container">
+
+			<div class="col-12">
+
+				<div class="list-header">
+
+					<h4 id="website-header">0 Monitors</h4>
+
+					<div class="actions">
+
+						<ul class="filter">
+
+							<li id="all-websites" class="active">All</li>
+							<li id="expired-websites">Expired</li>
+							<li id="expiring-websites">Expiring Soon</li>
+
+						</ul>
+
+						<div class="button-create" id="createWebsiteBtn">
+							Add Monitor
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="container" id="website-list"></div>
+
+	</section>
+
+	<section id="add-popup" class="popup-modal">
+
+		<div class="popup-backdrop"></div>
+		<div class="popup-content">
+
+			<div class="popup-header">
+				<h4>New Monitor</h4>
+				<span id="close-popup" class="close-btn">
+					<span></span>
+				</span>
+			</div>
+			<div class="popup-body">
+
+				<div id="website-error-message"></div>
+
+				<form id="websiteForm">
+
+					<div class="form-group">
+						<label for="Name">Name</label>
+						<div class="control">
+							<input type="text" id="Name" />
+							<span></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Host">Hostname</label>
+						<div class="control">
+							<input type="text" id="Host" />
+							<span></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Port">Port</label>
+						<div class="control">
+							<input type="text" id="Port" />
+							<span></span>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<div class="popup-footer">
+
+				<div class="button-create" id="add-website">
+					Create
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section id="alert-popup" class="popup-modal alert-modal">
+
+		<div class="popup-backdrop"></div>
+		<div class="popup-content">
+
+			<div class="popup-header">
+				<h4>Delete Monitor</h4>
+			</div>
+			<div class="popup-body">
+				<p>Are you sure you want to delete this monitor?</p>
+			</div>
+			<div class="popup-footer">
+
+				<div class="button-cancel" id="close-delete-popup">
+					No
+				</div>
+
+				<div class="button-create" id="delete-monitor">
+					Yes
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<script src="./index.js"></script>
+
+</body>
+
+</html>
