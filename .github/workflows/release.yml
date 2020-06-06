@@ -1,0 +1,26 @@
+name: CI
+
+on: push
+
+jobs:
+  release:
+    name: Release distributables for ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: 12.13.0
+      - name: Checkout the code
+        uses: actions/checkout@v1
+      - name: Install node packages
+        run: npm install
+      - name: Electron Builder
+        uses: samuelmeuli/action-electron-builder@v1.0.0
+        with:
+          release: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
