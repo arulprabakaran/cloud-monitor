@@ -12,15 +12,15 @@ jobs:
 
     steps:
       - name: Setup Node.js for use with actions
-        uses: actions/setup-node@v1.1.0
+        uses: actions/setup-node@v2.1.5
         with:
-          version: 12.13.0
+          node-version: 12.13.0
       - name: Checkout the code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.4
       - name: Install node packages
         run: npm install
       - name: Electron Builder
-        uses: samuelmeuli/action-electron-builder@v1.0.0
+        uses: samuelmeuli/action-electron-builder@v1.6.0
         with:
           release: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
