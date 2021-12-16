@@ -102,19 +102,23 @@ function get_days_left(date_string) {
 	await app.whenReady();
 	mainWindow = await createMainWindow();
 
-    let notificationOptions = {
-        title: "Monitors",
-        body: "All monitors look good.",
-        icon: 'icons/nic-success.png'
+    if(monitorData.websites.length > 0) {
+
+        let notificationOptions = {
+            title: "Monitors",
+            body: "All monitors look good.",
+            icon: 'icons/nic-success.png'
+        }
+
+        let expiringWebsites = monitorData.websites.filter(website => {return get_days_left(website.info.valid_to) < 21}).length
+
+        if (expiringWebsites > 0) {
+            notificationOptions.body = `${expiringWebsites} monitor${expiringWebsites == 1 ? "" : "s"} needs your attention.`
+            notificationOptions.icon = 'icons/nic-error.png';
+        }
+        new Notification(notificationOptions).show();
+
     }
-
-	let expiringWebsites = monitorData.websites.filter(website => {return get_days_left(website.info.valid_to) < 21}).length
-
-	if (expiringWebsites > 0) {
-        notificationOptions.body = `${expiringWebsites} monitor${expiringWebsites == 1 ? "" : "s"} needs your attention.`
-        notificationOptions.icon = 'icons/nic-error.png';
-	}
-    new Notification(notificationOptions).show();
 
 	ipcMain.on("get-websites", (event) => {
 		mainWindow.send('websites', monitorData.websites);
