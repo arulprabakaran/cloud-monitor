@@ -1,7 +1,7 @@
 {
 	"name": "cloud-monitor",
 	"productName": "Cloud Monitor",
-	"version": "0.0.3",
+	"version": "1.0.0",
 	"description": "Smart way to alert you when your website certificates need renewal or aren't working",
 	"license": "MIT",
 	"repository": "arulprabakaran/cloud-monitor",
